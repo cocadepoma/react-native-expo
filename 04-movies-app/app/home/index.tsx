@@ -28,28 +28,28 @@ const HomeScreen = () => {
       <View className='mt-2 pb-10' style={{ paddingTop: safeArea.top }}>
         <Text className='text-2xl font-bold px-4 mb-2'>MoviesApp</Text>
         <MainSlideshow
-          movies={nowPlayingQuery.data || []}
+          movies={nowPlayingQuery.data?.pages.flat() || []}
         />
 
         <MovieHorizontalList
-          movies={popularQuery.data || []}
+          movies={popularQuery.data?.pages.flat() || []}
           title="Popular Movies"
           className='mb-5'
+          loadNextPage={popularQuery.fetchNextPage}
         />
 
         <MovieHorizontalList
-          movies={topRatedQuery.data || []}
+          movies={topRatedQuery.data?.pages.flat() || []}
           title="Top Rated Movies"
           className='mb-5'
+          loadNextPage={topRatedQuery.fetchNextPage}
         />
 
         <MovieHorizontalList
-          movies={upComingQuery.data || []}
+          movies={upComingQuery.data?.pages.flat() || []}
           title="Upcoming Movies"
-        />
-        <MovieHorizontalList
-          movies={upComingQuery.data || []}
-          title="Upcoming Movies"
+          className='mb-5'
+          loadNextPage={upComingQuery.fetchNextPage}
         />
       </View>
     </ScrollView>

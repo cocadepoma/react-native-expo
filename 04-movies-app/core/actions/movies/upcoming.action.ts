@@ -3,9 +3,18 @@ import { Movie } from "@/infrastucture/interfaces/movie";
 import { MovieDBMoviesResponse } from "@/infrastucture/interfaces/movie-db-response";
 import { MovieMapper } from "@/infrastucture/mappers/movie";
 
-export const upcomingMoviesAction = async (): Promise<Movie[]> => {
+interface Options {
+  page?: number;
+  limit?: number;
+}
+
+export const upcomingMoviesAction = async ({ page = 1, limit = 10 }: Options = {}): Promise<Movie[]> => {
   try {
-    const { data } = await movieApi.get<MovieDBMoviesResponse>('/upcoming');
+    const { data } = await movieApi.get<MovieDBMoviesResponse>('/upcoming', {
+      params: {
+        page: page,
+      },
+    });
     return data.results.map(MovieMapper.fromTheMovieDBToMovie);
   } catch (error) {
     console.error('Error fetching upcoming movies:', error);
