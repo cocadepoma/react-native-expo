@@ -4,6 +4,7 @@ interface MenuRoute {
   title: string;
   icon: keyof typeof Ionicons.glyphMap;
   name: string;
+  headerShown?: boolean;
 }
 
 export const menuRoutes: MenuRoute[] = [
@@ -20,7 +21,7 @@ export const menuRoutes: MenuRoute[] = [
   {
     title: 'Modal',
     icon: 'copy-outline',
-    name: 'modal/index',
+    name: 'modal',
   },
   {
     title: 'InfiniteScroll',
@@ -31,6 +32,7 @@ export const menuRoutes: MenuRoute[] = [
     title: 'Slides',
     icon: 'flower-outline',
     name: 'slides/index',
+    headerShown: false,
   },
   {
     title: 'Themes',

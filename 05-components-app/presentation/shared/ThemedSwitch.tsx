@@ -29,7 +29,7 @@ const ThemedSwitch = ({ text, value, onValueChange, className }: Props) => {
         value={value}
         onValueChange={onValueChange}
         thumbColor={isAndroid ? swithActiveColor : ''}
-        ios_backgroundColor={value ? swithActiveColor : '#3e3e3e'}
+        ios_backgroundColor={value ? swithActiveColor : '#fff'}
         trackColor={{false: 'grey', true: swithActiveColor}}
       />
     </Pressable>
