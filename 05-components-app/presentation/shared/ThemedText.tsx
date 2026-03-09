@@ -5,10 +5,10 @@ import { useThemeColor } from '@/hooks/use-theme-color';
 interface Props extends TextProps {
   className?: string;
   color?: string;
-  type: 'normal' | 'h1' | 'h2' | 'semi-bold' | 'link';
+  type?: 'normal' | 'h1' | 'h2' | 'semi-bold' | 'link';
 }
 
-const ThemedText = ({ className, type, color, ...props }: Props) => {
+const ThemedText = ({ className, type = 'normal', color, ...props }: Props) => {
     const themedColor = useThemeColor({}, 'text');
     const textColor = color ?? themedColor;
   return (
